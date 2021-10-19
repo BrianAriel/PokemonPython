@@ -1,24 +1,61 @@
 from constants import *
-from models import *
+from pokemon import *
+from battle import *
 
 # First, we define pokemon with its stats
 
-pokemon1 = Pokemon("Bulbasur",100, "grass", "poison")
+pokemon1 = Pokemon("Bulbasur", 78, "grass", "poison")
 pokemon2 = Pokemon("Charmander", 100, "fire", None)
 pokemon1.current_hp = 45
 pokemon2.current_hp = 39
 
 # Second, stats
-pokemon1.stats = {
-    HP: 45,
-    ATTACK: 49,
-    DEFENSE: 49,
-    SPATTCK: 65,
-    SPDEFENSE: 65,
-    SPEED: 45
+pokemon1.baseStats = {
+    HP: 108,
+    ATTACK: 130,
+    DEFENSE: 95,
+    SPATTCK: 80,
+    SPDEFENSE: 85,
+    SPEED: 102
 }
 
-pokemon2.stats = {
+pokemon1.ev = {
+    HP: 74,
+    ATTACK: 190,
+    DEFENSE: 91,
+    SPATTCK: 48,
+    SPDEFENSE: 84,
+    SPEED: 23
+}
+
+pokemon1.iv = {
+    HP: 24,
+    ATTACK: 12,
+    DEFENSE: 30,
+    SPATTCK: 16,
+    SPDEFENSE: 23,
+    SPEED: 5
+}
+
+pokemon2.baseStats = {
+    HP: 39,
+    ATTACK: 52,
+    DEFENSE: 43,
+    SPATTCK: 80,
+    SPDEFENSE: 65,
+    SPEED: 65
+}
+
+pokemon2.ev = {
+    HP: 39,
+    ATTACK: 52,
+    DEFENSE: 43,
+    SPATTCK: 80,
+    SPDEFENSE: 65,
+    SPEED: 65
+}
+
+pokemon2.iv = {
     HP: 39,
     ATTACK: 52,
     DEFENSE: 43,
@@ -32,7 +69,7 @@ pokemon1.attacks = [Attack("scratch", "normal", PHYSICAL, 10, 10, 100)]
 pokemon2.attacks = [Attack("scratch", "normal", PHYSICAL, 10, 10, 100)]
 
 # Fourth, start battle
-battle = Battle(pokemon1,pokemon2)
+battle = Battle(pokemon1, pokemon2)
 
 
 def ask_command(pokemon):
