@@ -21,7 +21,7 @@ class Pokemon:
             HP: self.compute_hp_stat(),
             ATTACK: self.compute_standard_stat(ATTACK),
             DEFENSE: self.compute_standard_stat(DEFENSE),
-            SPATTCK: self.compute_standard_stat(SPATTCK),
+            SPATTACK: self.compute_standard_stat(SPATTACK),
             SPDEFENSE: self.compute_standard_stat(SPDEFENSE),
             SPEED: self.compute_standard_stat(SPEED)
         }
@@ -31,7 +31,7 @@ class Pokemon:
         return (int(value1 / 100) + 5) * NATURE_MATRIX[self.nature][stat]
 
     def compute_hp_stat(self):
-        value1 = (2 * self.stats["HP"]+self.iv["HP"]+int(self.ev["HP"]/4)) * self.level
+        value1 = (2 * self.baseStats["HP"]+self.iv["HP"]+int(self.ev["HP"]/4)) * self.level
         return int(value1 / 100) + self.level + 10
 
 
