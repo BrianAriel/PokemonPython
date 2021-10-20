@@ -1,11 +1,13 @@
+import pygame
+from pygame.locals import *
 from constants import *
 from pokemon import *
 from battle import *
 
 # First, we define pokemon with its stats
 
-pokemon1 = Pokemon("Pikachu", 100, 12, None)
-pokemon2 = Pokemon("Gyarados", 100, 10, 2)
+pokemon1 = Pokemon("Bulbasaur", 100, 12, None)
+pokemon2 = Pokemon("Bulbasaur", 100, 10, 2)
 pokemon1.current_hp = 45
 pokemon2.current_hp = 39
 
@@ -88,17 +90,75 @@ def ask_command(pokemon):
     return command
 
 
-while not battle.is_finished():
-    # We need to ask for command
+def load_resources():
+    load_pokemon_image(pokemon1, True)
+    load_pokemon_image(pokemon2, False)
+
+
+def update():
+    pass
+
+
+def render(screen):
+    screen.fill((255, 255, 255))  # White
+    render_pokemons(screen, pokemon1, pokemon2)
+    pygame.display.update()
+
+
+def load_pokemon_image(pokemon, is_player):
+    pokemon_name = pokemon.name.lower()
+
+    if is_player:
+        pokemon_img = pygame.image.load("C:/Users/brian/PycharmProjects/PokemonPython/res/" + pokemon_name + "_back.png")
+        pokemon_img = pygame.transform.scale(pokemon_img, (400, 400))
+    else:
+        pokemon_img = pygame.image.load("C:/Users/brian/PycharmProjects/PokemonPython/res/" + pokemon_name + "_front.png")
+        pokemon_img = pygame.transform.scale(pokemon_img, (400, 400))
+
+    pokemon.renderer = pokemon_img
+
+
+def render_pokemons(screen, render_pokemon1, render_pokemon2):
+    render_pokemon1.render(screen, (10, 200))
+    render_pokemon2.render(screen, (440, -50))
+
+
+def main():
+
+    pygame.init()
+    screen = pygame.display.set_mode((800, 640))
+    pygame.display.set_caption("Pokemon!")
+    load_resources()
+
+    clock = pygame.time.Clock()
+    clock.tick(60)
+
+    stopped = False
+    while not stopped:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                stopped = True
+        update()
+        render(screen)
+
+
+    # Main battle loop
+    # First we need the commands
+    '''
     command1 = ask_command(pokemon1)
     command2 = ask_command(pokemon2)
-
+    
+    # New turn
     turn = Turn()
     turn.command1 = command1
     turn.command2 = command2
-
+    
     if turn.can_start():
-        # We can execute the turn
+        # Now we execute the turn
         battle.execute_turn(turn)
         battle.print_current_status()
+    '''
 
+
+if __name__ == "__main__":
+    main()
