@@ -44,6 +44,3 @@ for row in pokemonRows[1:]:
 
 with open('C:/Users/brian/PycharmProjects/PokemonPython/Database/pokemons.json', 'w') as outfile:
     json.dump(pokemonDictionary, outfile)
-
-
-

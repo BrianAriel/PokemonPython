@@ -7,7 +7,7 @@ class Pokemon:
         self.level = level
         self.type1 = type1
         self.type2 = type2
-        self.attacks = [] #Vector de ataques
+        self.attacks = []  # Vector de ataques
         self.stats = {}
         self.baseStats = {}
         self.ev = {}
@@ -48,24 +48,3 @@ class Attack:
         self.pp = pp
         self.power = power
         self.accuracy = accuracy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

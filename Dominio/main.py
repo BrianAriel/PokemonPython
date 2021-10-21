@@ -11,7 +11,6 @@ def main():
         game.render()
 
     pygame.init()
-    screen = pygame.display.set_mode((800, 640))
 
 
 if __name__ == "__main__":
